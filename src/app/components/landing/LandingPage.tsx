@@ -95,7 +95,7 @@ function Hero({ onTryDemo }: { onTryDemo?: () => void }) {
   return (
     <section className="relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-sky-light to-bg-light" />
-      <div className="relative mx-auto max-w-6xl px-5 pt-12 pb-16 md:pt-20 md:pb-24 md:grid md:grid-cols-2 md:gap-5 md:items-center">
+      <div className="relative mx-auto max-w-5xl px-5 pt-12 pb-16 md:pt-20 md:pb-24 md:grid md:grid-cols-[3fr_2fr] md:gap-8 md:items-center">
         <div>
           <Reveal>
             <p
@@ -113,7 +113,7 @@ function Hero({ onTryDemo }: { onTryDemo?: () => void }) {
             <h1
               className="whitespace-pre-line"
               style={{
-                fontSize: "clamp(28px,7vw,52px)",
+                fontSize: "clamp(28px,4vw,52px)",
                 fontWeight: 800,
                 lineHeight: 1.25,
                 wordBreak: "keep-all",
