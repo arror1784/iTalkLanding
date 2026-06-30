@@ -488,24 +488,6 @@ function Evidence() {
           ))}
         </div>
       </Reveal>
-      <Reveal delay={0.24}>
-        <div className="mt-8 max-w-3xl mx-auto bg-white rounded-[22px] p-6 text-center border border-dashed border-[#cfe9f4]">
-          <p className="text-gray" style={{ fontSize: 14 }}>
-            전문가 자문 · 추천사 자리
-          </p>
-          <div className="flex justify-center gap-3 mt-3 opacity-60">
-            {["👩‍⚕️", "📚", "🎓"].map((e, i) => (
-              <span
-                key={i}
-                className="w-12 h-12 rounded-full bg-sky-light flex items-center justify-center"
-                style={{ fontSize: 22 }}
-              >
-                {e}
-              </span>
-            ))}
-          </div>
-        </div>
-      </Reveal>
     </Section>
   );
 }
@@ -513,12 +495,12 @@ function Evidence() {
 /* ── ⑥ 사회적 증거 ── */
 const reviews = [
   {
-    name: "지영 · 5세 엄마",
-    text: "출시되면 제일 먼저 써보고 싶어요. 매번 욱하고 후회했거든요.",
+    name: "지은(가명) · 21개월 엄마",
+    text: "아이가 아직 말하는 단어 갯수가 적어서 걱정이에요.",
   },
   {
-    name: "현우 · 6세 아빠",
-    text: "아이에게 어떻게 질문해야 할지 늘 막막했는데 기대돼요.",
+    name: "현우 · 7세 아빠",
+    text: "아이가 더 어릴때 이런 앱이 빨리 나왔다면 좋았을 것 같아요.",
   },
   {
     name: "수진 · 4세 엄마",
@@ -538,7 +520,7 @@ function SocialProof() {
           }}
         >
           <span className="text-sky-dark">
-            <CountUp to={1200} suffix="+" />
+            <CountUp to={100} suffix="+" />
           </span>{" "}
           부모가
           <br className="sm:hidden" /> 기다리고 있어요
@@ -619,7 +601,7 @@ function Benefits() {
       <Reveal delay={0.1}>
         <div className="mt-9 flex flex-col items-center gap-2">
           <CTAButton label="무료로 사전예약하고 혜택 받기" />
-          <Reassure text="질문 2개면 끝나요" />
+          <Reassure text="30초면 끝나요" />
         </div>
       </Reveal>
     </Section>
@@ -726,14 +708,14 @@ function Closing() {
             >
               완벽한 부모는 없어요.
               <br />
-              오늘보다 한 마디 더 다정하면 충분해요.
+              오늘보다 더 다정한 한 마디면 충분해요.
             </p>
           </Reveal>
           <Reveal delay={0.16}>
             <div className="mt-8 flex flex-col items-center gap-2">
               <CTAButton variant="cream" />
               <p className="text-white/80" style={{ fontSize: 13 }}>
-                무료 · 30초면 끝나요 · 질문 2개
+                무료 · 30초면 끝나요
               </p>
             </div>
           </Reveal>
@@ -763,8 +745,8 @@ function Footer() {
           className="flex flex-wrap gap-x-5 gap-y-2 mt-4 text-gray"
           style={{ fontSize: 13 }}
         >
-          <a href="mailto:hello@italk.app" className="hover:text-sky-dark">
-            문의: hello@italk.app
+          <a href="mailto:strata03@naver.com" className="hover:text-sky-dark">
+            문의: strata03@naver.com
           </a>
           <a href="#" className="hover:text-sky-dark">
             개인정보처리방침

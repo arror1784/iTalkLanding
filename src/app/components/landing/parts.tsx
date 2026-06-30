@@ -44,10 +44,7 @@ export function CTAButton({
   pulse?: boolean;
 }) {
   const isLg = size === "lg";
-  const bg =
-    variant === "cream"
-      ? "bg-ink text-white"
-      : "text-white";
+  const bg = variant === "cream" ? "bg-ink text-white" : "text-white";
   return (
     <motion.a
       href={GOOGLE_FORM}
@@ -55,11 +52,24 @@ export function CTAButton({
       rel="noopener"
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.96 }}
-      animate={pulse ? { boxShadow: ["0 8px 24px rgba(43,196,240,0.35)", "0 10px 30px rgba(43,196,240,0.55)", "0 8px 24px rgba(43,196,240,0.35)"] } : {}}
+      animate={
+        pulse
+          ? {
+              boxShadow: [
+                "0 8px 24px rgba(43,196,240,0.35)",
+                "0 10px 30px rgba(43,196,240,0.55)",
+                "0 8px 24px rgba(43,196,240,0.35)",
+              ],
+            }
+          : {}
+      }
       transition={pulse ? { duration: 1.8, repeat: Infinity } : {}}
       className={`inline-flex items-center justify-center rounded-2xl ${bg} ${full ? "w-full" : ""}`}
       style={{
-        background: variant === "primary" ? "linear-gradient(135deg,#2BC4F0,#5FD6F7)" : undefined,
+        background:
+          variant === "primary"
+            ? "linear-gradient(135deg,#2BC4F0,#5FD6F7)"
+            : undefined,
         minHeight: isLg ? 56 : 44,
         padding: isLg ? "0 28px" : "0 18px",
         fontSize: isLg ? 17 : 14,
@@ -73,7 +83,13 @@ export function CTAButton({
 }
 
 // 안심 보조 문구
-export function Reassure({ text = "무료 · 30초면 끝나요 · 질문 2개", className = "" }: { text?: string; className?: string }) {
+export function Reassure({
+  text = "무료 · 30초면 끝나요",
+  className = "",
+}: {
+  text?: string;
+  className?: string;
+}) {
   return (
     <p className={`text-gray ${className}`} style={{ fontSize: 13 }}>
       {text}
