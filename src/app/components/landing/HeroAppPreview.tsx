@@ -49,6 +49,8 @@ export function AppPreview({
             height: FRAME_H,
             transform: `scale(${scale})`,
             transformOrigin: "top left",
+            borderRadius: 30 / scale,
+            overflow: "hidden",
           }}
         >
           <AppProvider initialScreen={screen} initialTab={tab}>
