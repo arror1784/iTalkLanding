@@ -17,18 +17,21 @@ import { Mascot } from "../common/Mascot";
 import { AppPreview } from "./HeroAppPreview";
 import { Reveal, CTAButton, Reassure, CountUp, GOOGLE_FORM } from "./parts";
 
-// 외부 데모(라이브 배포) 링크
-const DEMO_URL = "https://i-talk-sable.vercel.app/";
+interface LandingPageProps {
+  onTryDemo?: () => void;
+}
 
-export function LandingPage() {
+export function LandingPage({ onTryDemo }: LandingPageProps) {
   return (
     <div
       className="min-h-screen bg-bg-light text-ink"
-      style={{ fontFamily: "'Pretendard', system-ui, sans-serif" }}
+      style={{
+        fontFamily: "'Pretendard', system-ui, sans-serif",
+      }}
     >
-      <Header />
+      <Header onTryDemo={onTryDemo} />
       <main className="pb-28 md:pb-0">
-        <Hero />
+        <Hero onTryDemo={onTryDemo} />
         <Problem />
         <Solution />
         <Features />
@@ -45,7 +48,7 @@ export function LandingPage() {
 }
 
 /* ── 상단 고정 헤더 ── */
-function Header() {
+function Header({ onTryDemo }: { onTryDemo?: () => void }) {
   return (
     <header className="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-[#eaf3f8]">
       <div className="mx-auto max-w-5xl px-5 h-14 flex items-center justify-between">
@@ -59,15 +62,15 @@ function Header() {
           <span style={{ fontSize: 18 }}>🐣</span>
         </div>
         <div className="flex items-center gap-2">
-          <a
-            href={DEMO_URL}
-            target="_blank"
-            rel="noopener"
-            className="rounded-xl px-4 h-9 flex items-center border border-[#2BC4F0] text-sky-dark hover:bg-sky-light transition-colors"
-            style={{ fontSize: 14, fontWeight: 600 }}
-          >
-            데모 체험 ▶
-          </a>
+          {onTryDemo && (
+            <button
+              onClick={onTryDemo}
+              className="rounded-xl px-4 h-9 flex items-center border border-[#2BC4F0] text-sky-dark hover:bg-sky-light transition-colors"
+              style={{ fontSize: 14, fontWeight: 600 }}
+            >
+              데모 체험 ▶
+            </button>
+          )}
           <a
             href={GOOGLE_FORM}
             target="_blank"
@@ -88,11 +91,11 @@ function Header() {
 }
 
 /* ── ① 히어로 ── */
-function Hero() {
+function Hero({ onTryDemo }: { onTryDemo?: () => void }) {
   return (
     <section className="relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-sky-light to-bg-light" />
-      <div className="relative mx-auto max-w-5xl px-5 pt-12 pb-16 md:pt-20 md:pb-24 md:grid md:grid-cols-2 md:gap-10 md:items-center">
+      <div className="relative mx-auto max-w-6xl px-5 pt-12 pb-16 md:pt-20 md:pb-24 md:grid md:grid-cols-2 md:gap-5 md:items-center">
         <div>
           <Reveal>
             <p
@@ -114,18 +117,24 @@ function Hero() {
                 fontWeight: 800,
                 lineHeight: 1.25,
                 wordBreak: "keep-all",
+                whiteSpace: "pre-line",
               }}
             >
+              {"아이의 언어발달이 잘될까,\n혼자 고민하시나요?"}
               {/* {"오늘도 아이에게\u00A0욱하고,\n밤에 혼자 미안했나요?"} */}
-              {"아이의 언어발달지연을 예방하는 솔루션"}
+              {/* {"아이의 언어발달지연을 예방하는 솔루션"} */}
             </h1>
           </Reveal>
           <Reveal delay={0.16}>
             <p
               className="text-gray mt-5"
-              style={{ fontSize: "clamp(16px,2.4vw,18px)", lineHeight: 1.5 }}
+              style={{
+                fontSize: "clamp(16px,2.4vw,18px)",
+                lineHeight: 1.5,
+              }}
             >
-              {"아이톡이 대화를 분석해, 더 다정하게 말하는 법을 함께 연습해요."}
+              아이톡이 우리 대화를 분석해, 더 다정하게 말하는 법을 함께
+              연습해요.
             </p>
           </Reveal>
           <Reveal delay={0.24}>
@@ -147,7 +156,7 @@ function Hero() {
 
         {/* 앱 목업 + 마스코트 — 실제로 만져볼 수 있는 라이브 데모 */}
         <div className="mt-12 md:mt-0 flex flex-col items-center">
-          <div className="relative">
+          <div className="relative z-0">
             <AppPreview screen="home" tab="home" interactive width={264} />
             <div className="absolute -bottom-4 -left-6 md:-left-10 pointer-events-none">
               <Mascot size={84} expression="happy" />
@@ -163,20 +172,19 @@ function Hero() {
               직접 만져보세요 👆
             </span>
           </div>
-          <a
-            href={DEMO_URL}
-            target="_blank"
-            rel="noopener"
-            className="mt-6 rounded-xl px-5 h-11 flex items-center gap-1.5 bg-white text-sky-dark border border-[#cfe9f4] hover:bg-sky-light transition-colors"
-            style={{
-              fontSize: 14,
-              fontWeight: 700,
-              position: "relative",
-              boxShadow: "0 8px 24px rgba(20,40,60,0.08)",
-            }}
-          >
-            <span>▶</span> 실제 데모 사이트에서 체험하기
-          </a>
+          {onTryDemo && (
+            <button
+              onClick={onTryDemo}
+              className="relative z-20 mt-6 rounded-xl px-5 h-11 flex items-center gap-1.5 bg-white text-sky-dark border border-[#cfe9f4] hover:bg-sky-light transition-colors"
+              style={{
+                fontSize: 14,
+                fontWeight: 700,
+                boxShadow: "0 8px 24px rgba(20,40,60,0.08)",
+              }}
+            >
+              <span>▶</span> 큰 화면으로 데모 체험하기
+            </button>
+          )}
         </div>
       </div>
     </section>
@@ -202,7 +210,9 @@ function Problem() {
           <Reveal key={p} delay={i * 0.08}>
             <div
               className="flex items-center gap-3 bg-white rounded-[20px] p-4"
-              style={{ boxShadow: "0 8px 24px rgba(20,40,60,0.06)" }}
+              style={{
+                boxShadow: "0 8px 24px rgba(20,40,60,0.06)",
+              }}
             >
               <span className="w-8 h-8 rounded-full bg-sky-light flex items-center justify-center shrink-0">
                 <Check size={18} className="text-sky-dark" strokeWidth={3} />
@@ -215,7 +225,9 @@ function Problem() {
       <Reveal delay={0.1}>
         <div
           className="mt-8 max-w-3xl mx-auto bg-cream rounded-[24px] p-6 text-center"
-          style={{ boxShadow: "0 8px 24px rgba(20,40,60,0.08)" }}
+          style={{
+            boxShadow: "0 8px 24px rgba(20,40,60,0.08)",
+          }}
         >
           <p
             style={{
@@ -238,12 +250,19 @@ function Problem() {
 const steps = [
   { n: 1, t: "대화를 들려주세요", icon: Mic },
   { n: 2, t: "AI가 분석해요", icon: BarChart3 },
-  { n: 3, t: "더 좋은 한마디를 알려드려요", icon: MessageSquareHeart },
+  {
+    n: 3,
+    t: "더 좋은 한마디를 알려드려요",
+    icon: MessageSquareHeart,
+  },
 ];
 
 const beforeAfter = [
   { before: "빨리 해!", after: "5분 뒤에 할까, 지금 할까?" },
-  { before: "조용히 해!", after: "무슨 일이 있었는지 말해줄래?" },
+  {
+    before: "조용히 해!",
+    after: "무슨 일이 있었는지 말해줄래?",
+  },
 ];
 
 function Solution() {
@@ -259,7 +278,9 @@ function Solution() {
           <Reveal key={s.n} delay={i * 0.1}>
             <div
               className="bg-white rounded-[20px] p-5 text-center h-full"
-              style={{ boxShadow: "0 8px 24px rgba(20,40,60,0.06)" }}
+              style={{
+                boxShadow: "0 8px 24px rgba(20,40,60,0.06)",
+              }}
             >
               <span className="inline-flex w-12 h-12 rounded-full bg-sky-light items-center justify-center mb-3">
                 <s.icon size={24} className="text-sky-dark" />
@@ -270,7 +291,13 @@ function Solution() {
               >
                 STEP {s.n}
               </p>
-              <p style={{ fontSize: 15, fontWeight: 600, lineHeight: 1.4 }}>
+              <p
+                style={{
+                  fontSize: 15,
+                  fontWeight: 600,
+                  lineHeight: 1.4,
+                }}
+              >
                 {s.t}
               </p>
             </div>
@@ -284,7 +311,9 @@ function Solution() {
           <div className="flex justify-center mb-5">
             <div
               className="inline-flex bg-white rounded-full p-1"
-              style={{ boxShadow: "0 8px 24px rgba(20,40,60,0.06)" }}
+              style={{
+                boxShadow: "0 8px 24px rgba(20,40,60,0.06)",
+              }}
             >
               {(["before", "after"] as const).map((k) => {
                 const active = (k === "after") === showAfter;
@@ -317,12 +346,17 @@ function Solution() {
               <div
                 key={i}
                 className="rounded-[22px] overflow-hidden"
-                style={{ boxShadow: "0 8px 24px rgba(20,40,60,0.08)" }}
+                style={{
+                  boxShadow: "0 8px 24px rgba(20,40,60,0.08)",
+                }}
               >
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={showAfter ? "a" : "b"}
-                    initial={{ opacity: 0, x: showAfter ? 20 : -20 }}
+                    initial={{
+                      opacity: 0,
+                      x: showAfter ? 20 : -20,
+                    }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.25 }}
@@ -336,7 +370,11 @@ function Solution() {
                     </p>
                     <p
                       className="mt-1"
-                      style={{ fontSize: 18, fontWeight: 700, lineHeight: 1.4 }}
+                      style={{
+                        fontSize: 18,
+                        fontWeight: 700,
+                        lineHeight: 1.4,
+                      }}
                     >
                       "{showAfter ? b.after : b.before}"
                     </p>
@@ -387,11 +425,15 @@ function Features() {
           <Reveal key={f.t} delay={i * 0.1}>
             <div
               className="bg-white rounded-[22px] p-6 h-full flex flex-col"
-              style={{ boxShadow: "0 8px 24px rgba(20,40,60,0.06)" }}
+              style={{
+                boxShadow: "0 8px 24px rgba(20,40,60,0.06)",
+              }}
             >
               <span
                 className="inline-flex w-14 h-14 rounded-2xl items-center justify-center mb-4"
-                style={{ background: "linear-gradient(135deg,#E6F7FD,#fff)" }}
+                style={{
+                  background: "linear-gradient(135deg,#E6F7FD,#fff)",
+                }}
               >
                 <f.icon size={26} className="text-sky-dark" />
               </span>
@@ -478,7 +520,10 @@ const reviews = [
     name: "현우 · 6세 아빠",
     text: "아이에게 어떻게 질문해야 할지 늘 막막했는데 기대돼요.",
   },
-  { name: "수진 · 4세 엄마", text: "동화 읽어주기 코칭이 특히 궁금해요!" },
+  {
+    name: "수진 · 4세 엄마",
+    text: "동화 읽어주기 코칭이 특히 궁금해요!",
+  },
 ];
 
 function SocialProof() {
@@ -487,10 +532,13 @@ function SocialProof() {
       <Reveal>
         <p
           className="text-center"
-          style={{ fontSize: "clamp(26px,5vw,40px)", fontWeight: 800 }}
+          style={{
+            fontSize: "clamp(26px,5vw,40px)",
+            fontWeight: 800,
+          }}
         >
           <span className="text-sky-dark">
-            <CountUp to={100} suffix="+" />
+            <CountUp to={1200} suffix="+" />
           </span>{" "}
           부모가
           <br className="sm:hidden" /> 기다리고 있어요
@@ -501,7 +549,9 @@ function SocialProof() {
           <Reveal key={i} delay={i * 0.1}>
             <div
               className="bg-cream rounded-[22px] p-5 h-full"
-              style={{ boxShadow: "0 8px 24px rgba(20,40,60,0.06)" }}
+              style={{
+                boxShadow: "0 8px 24px rgba(20,40,60,0.06)",
+              }}
             >
               <p style={{ fontSize: 15, lineHeight: 1.55 }}>"{r.text}"</p>
               <p
@@ -520,8 +570,16 @@ function SocialProof() {
 
 /* ── ⑦ 사전예약 혜택 ── */
 const benefits = [
-  { icon: Ticket, t: "베타 우선 참여", d: "정식 출시 전 먼저 써보기" },
-  { icon: Gift, t: "사전예약 선물", d: "아이와 함께 보는 동화 e-book" },
+  {
+    icon: Ticket,
+    t: "베타 우선 참여",
+    d: "정식 출시 전 먼저 써보기",
+  },
+  {
+    icon: Gift,
+    t: "사전예약 선물",
+    d: "아이와 함께 보는 동화 e-book",
+  },
   {
     icon: Crown,
     t: "출시 후 프리미엄 무료",
@@ -540,7 +598,9 @@ function Benefits() {
           <Reveal key={b.t} delay={i * 0.1}>
             <div
               className="bg-cream rounded-[22px] p-6 h-full"
-              style={{ boxShadow: "0 8px 24px rgba(20,40,60,0.08)" }}
+              style={{
+                boxShadow: "0 8px 24px rgba(20,40,60,0.08)",
+              }}
             >
               <span className="inline-flex w-12 h-12 rounded-2xl bg-white items-center justify-center mb-3">
                 <b.icon size={24} className="text-[#d99e00]" />
@@ -604,7 +664,9 @@ function Faq() {
             <Reveal key={i} delay={i * 0.05}>
               <div
                 className="bg-white rounded-[18px] overflow-hidden"
-                style={{ boxShadow: "0 8px 24px rgba(20,40,60,0.05)" }}
+                style={{
+                  boxShadow: "0 8px 24px rgba(20,40,60,0.05)",
+                }}
               >
                 <button
                   onClick={() => setOpen(isOpen ? null : i)}
@@ -625,7 +687,10 @@ function Faq() {
                     >
                       <p
                         className="text-gray px-4 pb-4"
-                        style={{ fontSize: 15, lineHeight: 1.55 }}
+                        style={{
+                          fontSize: 15,
+                          lineHeight: 1.55,
+                        }}
                       >
                         {f.a}
                       </p>
@@ -698,8 +763,8 @@ function Footer() {
           className="flex flex-wrap gap-x-5 gap-y-2 mt-4 text-gray"
           style={{ fontSize: 13 }}
         >
-          <a href="mailto:strata03@naver.com" className="hover:text-sky-dark">
-            문의: strata03@naver.com
+          <a href="mailto:hello@italk.app" className="hover:text-sky-dark">
+            문의: hello@italk.app
           </a>
           <a href="#" className="hover:text-sky-dark">
             개인정보처리방침
