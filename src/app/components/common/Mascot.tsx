@@ -13,7 +13,7 @@ export function Mascot({
   float?: boolean;
 }) {
   const body = (
-    <svg width={size} height={size} viewBox="0 0 120 120" fill="none">
+    <svg className="ml-[-8px] mr-[23px] my-[0px]" width={size} height={size} viewBox="0 0 120 120" fill="none">
       {/* 몸통 */}
       <circle cx="60" cy="60" r="52" fill="var(--sky)" />
       <circle cx="60" cy="60" r="52" fill="url(#mascotGrad)" fillOpacity="0.35" />

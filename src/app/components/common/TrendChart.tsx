@@ -40,6 +40,7 @@ export function TrendChart({
             }}
           />
           <Line
+            key="line-score"
             type="monotone"
             dataKey="score"
             stroke="var(--sky)"

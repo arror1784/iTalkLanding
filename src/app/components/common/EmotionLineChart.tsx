@@ -33,6 +33,7 @@ export function EmotionLineChart({
             }}
           />
           <Line
+            key="line-parent"
             type="monotone"
             dataKey="부모"
             stroke="var(--sky)"
@@ -42,6 +43,7 @@ export function EmotionLineChart({
             animationDuration={1400}
           />
           <Line
+            key="line-child"
             type="monotone"
             dataKey="아이"
             stroke="var(--cream-strong)"
