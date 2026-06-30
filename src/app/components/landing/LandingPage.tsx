@@ -171,6 +171,7 @@ function Hero() {
             style={{
               fontSize: 14,
               fontWeight: 700,
+              position: "relative",
               boxShadow: "0 8px 24px rgba(20,40,60,0.08)",
             }}
           >
