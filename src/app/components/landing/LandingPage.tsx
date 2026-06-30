@@ -149,7 +149,7 @@ function Hero({ onTryDemo }: { onTryDemo?: () => void }) {
               style={{ fontSize: 13 }}
             >
               <Heart size={14} className="text-coral" fill="var(--coral)" />
-              출시를 기다리는 부모 100+
+              출시를 기다리는 부모 30+
             </p>
           </Reveal>
         </div>
@@ -520,7 +520,7 @@ function SocialProof() {
           }}
         >
           <span className="text-sky-dark">
-            <CountUp to={100} suffix="+" />
+            <CountUp to={30} suffix="+" />
           </span>{" "}
           부모가
           <br className="sm:hidden" /> 기다리고 있어요
