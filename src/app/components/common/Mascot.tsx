@@ -13,23 +13,71 @@ export function Mascot({
   float?: boolean;
 }) {
   const body = (
-    <svg className="ml-[-8px] mr-[23px] my-[0px]" width={size} height={size} viewBox="0 0 120 120" fill="none">
+    <svg
+      className="block"
+      width={size}
+      height={size}
+      viewBox="0 0 120 120"
+      fill="none"
+    >
       {/* 몸통 */}
       <circle cx="60" cy="60" r="52" fill="var(--sky)" />
-      <circle cx="60" cy="60" r="52" fill="url(#mascotGrad)" fillOpacity="0.35" />
+      <circle
+        cx="60"
+        cy="60"
+        r="52"
+        fill="url(#mascotGrad)"
+        fillOpacity="0.35"
+      />
       {/* 볼 */}
-      <circle cx="38" cy="72" r="8" fill="var(--cream-strong)" fillOpacity="0.7" />
-      <circle cx="82" cy="72" r="8" fill="var(--cream-strong)" fillOpacity="0.7" />
+      <circle
+        cx="38"
+        cy="72"
+        r="8"
+        fill="var(--cream-strong)"
+        fillOpacity="0.7"
+      />
+      <circle
+        cx="82"
+        cy="72"
+        r="8"
+        fill="var(--cream-strong)"
+        fillOpacity="0.7"
+      />
       {/* 눈 — ö 눈웃음 */}
       {expression === "sleepy" ? (
         <>
-          <path d="M40 56 q8 6 16 0" stroke="var(--cream)" strokeWidth="4" strokeLinecap="round" fill="none" />
-          <path d="M64 56 q8 6 16 0" stroke="var(--cream)" strokeWidth="4" strokeLinecap="round" fill="none" />
+          <path
+            d="M40 56 q8 6 16 0"
+            stroke="var(--cream)"
+            strokeWidth="4"
+            strokeLinecap="round"
+            fill="none"
+          />
+          <path
+            d="M64 56 q8 6 16 0"
+            stroke="var(--cream)"
+            strokeWidth="4"
+            strokeLinecap="round"
+            fill="none"
+          />
         </>
       ) : (
         <>
-          <path d="M40 60 q8 -10 16 0" stroke="var(--cream)" strokeWidth="5" strokeLinecap="round" fill="none" />
-          <path d="M64 60 q8 -10 16 0" stroke="var(--cream)" strokeWidth="5" strokeLinecap="round" fill="none" />
+          <path
+            d="M40 60 q8 -10 16 0"
+            stroke="var(--cream)"
+            strokeWidth="5"
+            strokeLinecap="round"
+            fill="none"
+          />
+          <path
+            d="M64 60 q8 -10 16 0"
+            stroke="var(--cream)"
+            strokeWidth="5"
+            strokeLinecap="round"
+            fill="none"
+          />
         </>
       )}
       {/* 입 */}
@@ -43,9 +91,28 @@ export function Mascot({
       {/* 헤드폰 (listening) */}
       {expression === "listening" && (
         <>
-          <path d="M22 60 a38 38 0 0 1 76 0" stroke="var(--sky-dark)" strokeWidth="6" fill="none" />
-          <rect x="14" y="56" width="14" height="22" rx="7" fill="var(--sky-dark)" />
-          <rect x="92" y="56" width="14" height="22" rx="7" fill="var(--sky-dark)" />
+          <path
+            d="M22 60 a38 38 0 0 1 76 0"
+            stroke="var(--sky-dark)"
+            strokeWidth="6"
+            fill="none"
+          />
+          <rect
+            x="14"
+            y="56"
+            width="14"
+            height="22"
+            rx="7"
+            fill="var(--sky-dark)"
+          />
+          <rect
+            x="92"
+            y="56"
+            width="14"
+            height="22"
+            rx="7"
+            fill="var(--sky-dark)"
+          />
         </>
       )}
       {/* 손 흔들기 (cheer) */}
